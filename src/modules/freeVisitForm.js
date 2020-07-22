@@ -1,5 +1,6 @@
 'use strict';
 
+// открытие модального окна при клике на надпись "Записаться на бесплатынй прием"
 const freeVisitForm = () => {
     const freeVisit = document.querySelector('.free-visit p'),
         popUp = document.getElementById('free_visit_form');
