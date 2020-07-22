@@ -2,8 +2,7 @@
 
 const freeVisitForm = () => {
     const freeVisit = document.querySelector('.free-visit p'),
-        popUp = document.getElementById('free_visit_form'),
-        closeBtn = document.querySelector('.close_icon');
+        popUp = document.getElementById('free_visit_form');
 
     freeVisit.addEventListener('click', (e) => {
         popUp.style.display = 'inline-block';
