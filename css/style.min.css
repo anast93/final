@@ -947,7 +947,10 @@ button {
 
 header {
     max-height: 700px;
-    position: relative
+    position: relative;
+    /* добавила сама */
+    background-image: linear-gradient(to right, #230a16 0%, #0c0b15 100%);
+    
 }
 
 header .head {
@@ -2539,7 +2542,7 @@ p.personal-data input[type=checkbox]:checked+label:before {
     .main-slider .slide .slide-text .offer-head,
     .main-slider .slide.type2 .slide-text .offer-head {
         background: transparent;
-        margin-top: 30px;
+        margin-top: 30px; 
         text-align: center
     }
 

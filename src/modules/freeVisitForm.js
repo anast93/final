@@ -3,7 +3,7 @@ import closeForm from './closeForm';
 // Открытие модального окна при клике на надпись "Записаться на бесплатынй прием"
 const freeVisitForm = () => {
     const freeVisit = document.querySelector('.free-visit p'),
-    popup = document.getElementById('free_visit_form');
+        popup = document.getElementById('free_visit_form');
 
     freeVisit.addEventListener('click', (e) => {
         popup.style.display = 'inline-block';

@@ -4,10 +4,10 @@ import closeForm from './closeForm';
 // Открытие модального окна при клике на кнопку "Перезвоните мне"
 const callbackForm = () => {
     const callbackBtn = document.querySelector('.callback-btn'),
-    popup = document.getElementById('callback_form');
+        popup = document.getElementById('callback_form');
 
     callbackBtn.addEventListener('click', () => {
-    popup.style.display = 'inline-block';
+        popup.style.display = 'inline-block';
     });
 
     closeForm(popup);
