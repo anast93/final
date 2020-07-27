@@ -304,9 +304,16 @@ html#schelkovo .head-slider .slider-image img {
     min-width: 474px
 }
 
+/* Добавила сама */
+html#mozaika .main-slider .slide,
+html#schelkovo .main-slider .slide {
+    justify-content: center;
+}
+
+/* Исправлено на block, было - none */
 html#mozaika .main-slider .slide .slide-text .validity,
 html#schelkovo .main-slider .slide .slide-text .validity {
-    display: none
+    display: block
 }
 
 html#mozaika .main-slider .slide .slide-text .offer-head .top,
@@ -537,31 +544,56 @@ html#schelkovo #adv-slider .advantage:last-child {
 html#mozaika #adv-slider .slider-arrow,
 html#schelkovo #adv-slider .slider-arrow {
     position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 100;
+    cursor: pointer
+    /*position: absolute;
     top: 75px;
     margin-top: -18px;
     z-index: 100;
-    cursor: pointer
+    cursor: pointer*/
 }
 
 html#mozaika #adv-slider .slider-arrow span,
 html#schelkovo #adv-slider .slider-arrow span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 37px;
+    background-color: #f4c71b;
+    border-radius: 50%;
+    /*display: block;
     width: 36px;
     height: 37px;
     background-color: #f4c71b;
     border-radius: 50%;
     text-align: center;
-    padding-top: 11px
+    padding-top: 11px*/
 }
 
-html#mozaika #adv-slider .slider-arrow.prev,
-html#schelkovo #adv-slider .slider-arrow.prev {
-    left: 2px
+html#mozaika #adv-slider .slider-arrow .prev,
+html#schelkovo #adv-slider .slider-arrow .prev {
+    margin-right: 3px;
+    width: 7px;
+    height: 16px;
+    background: url(../images/arrow-left.png) no-repeat;
+    /*left: 2px*/
 }
 
-html#mozaika #adv-slider .slider-arrow.next,
-html#schelkovo #adv-slider .slider-arrow.next {
-    right: 2px
+html#mozaika #adv-slider .slider-arrow .next,
+html#schelkovo #adv-slider .slider-arrow .next {
+    margin-left: 3px;
+    width: 7px;
+    height: 16px;
+    background: url(../images/arrow-right.png) no-repeat;
+    /*right: 2px*/
 }
 
 html#mozaika #cards .right,
@@ -832,7 +864,8 @@ html#schelkovo .advantages .wrapper {
 
 .fixed-gift {
     position: fixed;
-    z-index: 5555;
+    /* было 5555 */
+    z-index: 5555; 
     display: inline;
     top: 15px;
     right: 20px;
@@ -1409,6 +1442,13 @@ nav.popup-menu .close-menu-btn img {
     background-color: #ffd11a
 }
 
+/* Добавила сама! */
+.slide .slide-active {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
+}
+
 #clubs {
     padding-bottom: 50px
 }
@@ -1608,49 +1648,108 @@ nav.popup-menu .close-menu-btn img {
     background: url(../images/gallery-bg.png) left center no-repeat
 }
 
+/* Добавила position: relative */
 #gallery .gallery-slider {
+    position: relative;
     padding-left: 75px;
     padding-right: 75px;
     max-width: 900px;
+   /* height: 400px;*/
     margin: 0 auto;
     text-align: center
 }
 
 #gallery .gallery-slider .slide {
     margin: 0 auto !important;
-    width: 100%
+    /* width: 100% */
+    /* Добавила этот кусок из старого проекта */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* Вставила из старого проекта */
+#gallery .gallery-slider .slide img {
+    display: block;
+    height: auto;
+    max-width: 750px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 900px) {
+    #gallery .gallery-slider .slide img {
+        max-width: 650px;
+    } 
+}
+
+@media only screen and (max-width: 767px) {
+    #gallery .gallery-slider .slide img {
+        max-width: 550px;
+    } 
+}
+
+#gallery .gallery-slider .slide-active {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
 }
 
 #gallery .gallery-slider .slider-arrow {
     position: absolute;
     top: 50%;
-    margin-top: -18px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    width: 100%;
+    transform: translateY(-50%);
     z-index: 100;
     cursor: pointer
 }
 
 #gallery .gallery-slider .slider-arrow span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 37px;
     background-color: #f4c71b;
     border-radius: 50%;
-    text-align: center;
-    padding-top: 11px
 }
 
-#gallery .gallery-slider .slider-arrow.prev {
-    left: 0
+#gallery .gallery-slider .slider-arrow .prev {
+    margin-right: 3px;
+    width: 7px;
+    height: 16px;
+    background: url(../images/arrow-left.png) no-repeat;
+    /*left: 0*/
 }
 
-#gallery .gallery-slider .slider-arrow.next {
-    right: 0
+#gallery .gallery-slider .slider-arrow .next {
+    margin-left: 3px;
+    width: 7px;
+    height: 16px;
+    background: url(../images/arrow-right.png) no-repeat;
+   /* right: 0*/
 }
 
 #gallery .gallery-slider .slider-dots {
+    position: absolute;
+    bottom: 5%;
     left: 50%;
     margin-left: -65px;
-    bottom: 5%
 }
 
 #cards {
@@ -2125,6 +2224,21 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     text-align: center
 }
 
+/* добавляю класс1 */
+.form-content_load { 
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: .7;
+    z-index: 6666;
+}
+
 .popup .form-content .btn {
     margin: auto
 }
@@ -2471,7 +2585,7 @@ p.personal-data input[type=checkbox]:checked+label:before {
     }
 
     #gallery .gallery-slider .slider-dots {
-        background-color: rgba(79, 25, 52, .5);
+        /* background-color: rgba(79, 25, 52, .5); */
         padding-top: 12px;
         padding-left: 5px;
         padding-right: 5px

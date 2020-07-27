@@ -1,9 +1,7 @@
-'use strict'
+'use strict';
 
 const mainSlider = () => {
-    
-    if(document.querySelector('.slider-image')) {
-        const blockSlider = document.querySelector('.main-slider'),
+    const blockSlider = document.querySelector('.main-slider'),
             slide = blockSlider.querySelectorAll('.slide');
 
         let count = 0;
@@ -18,9 +16,6 @@ const mainSlider = () => {
         slide[count].style.display = 'flex';
         //slide[count].style.margin = '0 auto';
     }, 1300);
-    } else return;
- 
-
 };
 
 export default mainSlider;

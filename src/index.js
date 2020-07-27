@@ -9,6 +9,14 @@ import burgerMenu from './modules/burgerMenu';
 import togglePopUp from './modules/togglePopUp';
 import addArrow from './modules/addArrow';
 import calc from './modules/calc';
+import sliderGallery from './modules/sliderGallery';
+import sendForm from './modules/sendForm';
+import validator from './modules/validator';
+import maskPhone from './modules/maskPhone';
+
+
+
+
 
 selectClub();
 freeVisitForm();
@@ -23,4 +31,8 @@ burgerMenu();
 togglePopUp();
 addArrow();
 calc();
+sendForm();
+sliderGallery();
+validator();
+maskPhone('input[name="phone"]');
 

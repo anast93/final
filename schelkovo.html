@@ -297,6 +297,8 @@
 </div>
 <section id="cards">
     <div class="wrapper">
+        <!-- Добавила 3 дива, потом добавить их ср-вами JS -->
+        <div class="form-content_load"></div> 
         <h2>выбрать карту</h2>
         <form action="" id="card_order">
             <div class="cards-types">
@@ -312,8 +314,8 @@
                 <label for="t3"><span class="long">9 месяцев</span><br><span class="solo">- соло -</span><br><span
                         class="cost">21990<span class="rubl">i</span></span><br><span
                         class="frost">* Без заморозки</span></label>
-                <input id="t4" type="radio" name="card-type" value="12d">
-                <label for="t4"><span class="long">12 месяцев</span><br><span class="solo">- дневная -</span><br><span
+                <input id="t4" type="radio" name="card-type" value="12d" display="none">
+                <label for="t4" display="none"><span class="long">12 месяцев</span><br><span class="solo">- дневная -</span><br><span
                         class="cost">14990<span class="rubl">i</span></span><br><span
                         class="frost">* 1 месяц заморозки</span></label>
                 <input id="t5" type="radio" name="card-type" value="12s">
@@ -332,7 +334,7 @@
                                                  placeholder="Ваш номер телефона..."></p>
                     <div class="form-bottom">
                         <p class="personal-data">
-                            <input type="checkbox" required id="card_check"><label for="card_check">Я согласен на
+                            <input type="checkbox" id="card_check"><label for="card_check">Я согласен на
                             обработку персональных данных</label>
                         </p>
                         <p class="submit">
@@ -349,22 +351,35 @@
     <div class="gallery-bg">
         <div class="wrapper">
             <div class="gallery-slider">
-                <div class="slide">
-                    <img src="images/gallery/photo1.jpg" alt="">
+                <div class="slider-arrow">
+                  <span id="prev"><div class="prev"></div></span>
+                  <span id="next"><div class="next"></div></span>
                 </div>
-                <div class="slide">
-                    <img src="images/gallery/photo2.jpg" alt="">
+                <div class="slider-dots">
+                  <ul>
+                    <li><button></button></li>
+                    <li><button></button></li>
+                    <li><button></button></li>
+                    <li><button></button></li>
+                    <li><button></button></li>
+                  </ul>
                 </div>
-                <div class="slide">
-                    <img src="images/gallery/photo3.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="images/gallery/photo4.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="images/gallery/photo5.jpg" alt="">
-                </div>
-            </div>
+                  <div class="slide">
+                      <img src="images/gallery/photo1.jpg" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="images/gallery/photo2.jpg"  alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="images/gallery/photo3.jpg" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="images/gallery/photo4.jpg" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="images/gallery/photo5.jpg" alt="">
+                  </div>
+              </div>
         </div>
     </div>
 </section>
@@ -429,13 +444,14 @@
     <div class="wrapper">
         <h2>Записаться на бесплатный&nbsp;визит</h2>
         <div class="form-wrapper">
+            <div class="form-content_load"></div>
             <form name="banner-form" id="banner-form" action="#" method="post">
                 <input type="hidden" name="form_name" value=" Записаться на визит">
                 <input name="name" type="text" required placeholder="Ваше имя...">
                 <input type="tel" name="phone" id="phone" required placeholder="Ваш номер телефона...">
                 <button name="send" class="btn" type="submit">Записаться</button>
                 <p class="personal-data">
-                    <input type="checkbox" required id="check1"><label for="check1">Я согласен на обработку персональных
+                    <input type="checkbox" id="check1"><label for="check1">Я согласен на обработку персональных
                     данных</label>
                 </p>
             </form>
@@ -472,6 +488,7 @@
                 </div>
             </div>
             <div class="right">
+                <div class="form-content_load"></div>
                 <form action="#" id="footer_form">
                     <div class="content">
                         <div class="choose-club">
@@ -495,7 +512,7 @@
                             <p>Единый телефон</p>
                             <p class="tel">+7 (800) 555-64-47</p>
                             <p class="input-text"><input type="tel" name="phone" id="callback_footer_form-phone"
-                                                         required="" placeholder="Ваш номер телефона..."></p>
+                                                         required placeholder="Ваш номер телефона..."></p>
 
                             <button class="btn callback-btn" type="submit" data-popup="#callback_form">Перезвоните мне
                             </button>
@@ -537,6 +554,8 @@
             <img src="images/close-icon.png" alt="close" class="close_icon">
         </div>
         <div class="form-content">
+            <!-- Добавила 3 дива, потом добавить их ср-вами JS -->
+            <div class="form-content_load"></div> 
             <form name="callback-form" id="form1" action="#" method="post">
                 <h4>Обратный звонок</h4>
                 <input type="hidden" name="form_name" value=" Обратный звонок">
@@ -545,7 +564,7 @@
                 <p class="input-text"><input type="tel" name="phone" id="callback_form1-phone" required
                                              placeholder="Ваш номер телефона..."></p>
                 <p class="personal-data">
-                    <input type="checkbox" required id="check"><label for="check">Я согласен на обработку <br>персональных
+                    <input type="checkbox" id="check"><label for="check">Я согласен на обработку <br>персональных
                     данных</label>
 
                 </p>
@@ -563,6 +582,8 @@
             <img src="images/close-icon.png" alt="close" class="close_icon">
         </div>
         <div class="form-content">
+            <!-- Добавила 3 дива, потом добавить их ср-вами JS -->
+            <div class="form-content_load"></div> 
             <form name="free-visit-form" id="form2" action="#" method="post">
                 <h4>Записаться на визит</h4>
                 <input type="hidden" name="form_name" value=" Записаться на визит">
@@ -570,7 +591,7 @@
                 <p class="input-text"><input type="tel" name="phone" id="callback_form2-phone" required
                                              placeholder="Ваш номер телефона..."></p>
                 <p class="personal-data">
-                    <input type="checkbox" required id="check2"><label for="check2">Я согласен на обработку <br>персональных
+                    <input type="checkbox" id="check2"><label for="check2">Я согласен на обработку <br>персональных
                     данных</label>
 
                 </p>
