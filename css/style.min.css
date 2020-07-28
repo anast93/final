@@ -1579,17 +1579,23 @@ nav.popup-menu .close-menu-btn img {
 }
 
 .services-slider {
+    position: relative;
     display: flex;
-    margin: 0 auto;
+    justify-content: center;
+   /* margin: 0 auto;*/
     padding-left: 15px;
     padding-right: 15px
 }
 
+.services-slider-wrap{
+    display: flex;
+}
+
 .services-slider .slide {
     text-align: center;
-    margin-right: 6px;
-    margin-left: 6px;
-    width: 210px
+    /*margin-right: 5px;
+    margin-left: 5px;
+    width: 210px;*/
 }
 
 .services-slider .slide img {
@@ -1616,20 +1622,26 @@ nav.popup-menu .close-menu-btn img {
 
 .services-slider .slider-arrow {
     position: absolute;
-    top: 75px;
-    margin-top: -18px;
+    top: 20%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+   /* margin-top: -18px;*/
+    width: 100%;
     z-index: 100;
     cursor: pointer
 }
 
 .services-slider .slider-arrow span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 37px;
     background-color: #f4c71b;
     border-radius: 50%;
     text-align: center;
-    padding-top: 11px
+    /*padding-top: 11px*/
 }
 
 .services-slider .slider-arrow.prev {
@@ -1729,7 +1741,9 @@ nav.popup-menu .close-menu-btn img {
     border-radius: 50%;
 }
 
-#gallery .gallery-slider .slider-arrow .prev {
+#gallery .gallery-slider .slider-arrow .prev,
+/* Добавила  #services .services-slider .slider-arrow .prev*/
+#services .services-slider .slider-arrow .prev {
     margin-right: 3px;
     width: 7px;
     height: 16px;
@@ -1737,7 +1751,9 @@ nav.popup-menu .close-menu-btn img {
     /*left: 0*/
 }
 
-#gallery .gallery-slider .slider-arrow .next {
+#gallery .gallery-slider .slider-arrow .next,
+/* #services .services-slider .slider-arrow .next */
+#services .services-slider .slider-arrow .next{
     margin-left: 3px;
     width: 7px;
     height: 16px;
