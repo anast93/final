@@ -5,9 +5,8 @@ import checkConsent from './checkConsent';
 
 //Отправка форм
 const sendForm = () => {
-        const preload = '<img src="./images/eclipse.svg">';
-        
-    
+    const preload = '<img src="./images/eclipse.svg">';
+
     document.addEventListener('submit', (event) => {
         const target = event.target;
         
@@ -28,7 +27,6 @@ const sendForm = () => {
             formData.forEach((val, key) => {
                 body[key] = val;
             });
-            console.log(body);
             form.reset();
 
             postData(body)
@@ -45,6 +43,10 @@ const sendForm = () => {
                     }
 
                     thanks.style.display = 'block';
+                    // setTimeout(() => {
+                    //     thanks.classList.add('animate__fadeOutUp');
+                    // }, 1000);
+                   
                     closeForm(thanks);
 
             })
@@ -79,3 +81,4 @@ const sendForm = () => {
 
 
 export default sendForm;
+

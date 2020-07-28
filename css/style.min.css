@@ -1577,14 +1577,12 @@ nav.popup-menu .close-menu-btn img {
     padding: 5px 5px 5px 18px;
     margin-right: 5px
 }
-
-.services-slider {
+/*------------------------------------------------------------------*/
+/* .services-slider {
     position: relative;
     display: flex;
-    justify-content: center;
-   /* margin: 0 auto;*/
-    padding-left: 15px;
-    padding-right: 15px
+
+    overflow: hidden;
 }
 
 .services-slider-wrap{
@@ -1593,9 +1591,18 @@ nav.popup-menu .close-menu-btn img {
 
 .services-slider .slide {
     text-align: center;
-    /*margin-right: 5px;
-    margin-left: 5px;
-    width: 210px;*/
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+@media only screen and (max-width: 767px) {
+    .services-slider .slide {
+   	    flex: 0 0 50%;
+    		max-width: 50%;
+    }
 }
 
 .services-slider .slide img {
@@ -1626,6 +1633,89 @@ nav.popup-menu .close-menu-btn img {
     left: 0;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    z-index: 100;
+    cursor: pointer
+}
+
+.services-slider .slider-arrow span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 37px;
+    background-color: #f4c71b;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.services-slider .slider-arrow.prev {
+    left: 2px
+}
+
+.services-slider .slider-arrow.next {
+    right: 2px
+} */
+/*----------------------------------------------------------------*/
+.services-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.services-slider-wrap {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+
+.services-slider .slide {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+    flex: 0 0 20%;
+    max-width: 20%;
+		box-sizing: border-box;
+		padding: 0 10px 0 10px;
+		text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .services-slider .slide {
+      flex: 0 0 100%;
+    	max-width: 100%;
+    } 
+}
+
+.services-slider .slide img {
+    margin: 0 auto 19px
+}
+
+.services-slider .slide h6 {
+    color: #2e2e2e;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px
+}
+
+.services-slider .slide p {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+   /* padding-left: 10px;
+    padding-right: 10px;*/
+    max-width: 200px;
+    margin: 0 auto
+}
+
+.services-slider .slider-arrow {
+
+    position: absolute;
+    top: 20%;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
    /* margin-top: -18px;*/
     width: 100%;
     z-index: 100;
@@ -1644,11 +1734,12 @@ nav.popup-menu .close-menu-btn img {
     /*padding-top: 11px*/
 }
 
-.services-slider .slider-arrow.prev {
-    left: 2px
+.services-slider .slider-arrow .prev {
+
+   /* left: 2px*/
 }
 
-.services-slider .slider-arrow.next {
+.services-slider .slider-arrow .next {
     right: 2px
 }
 
@@ -2183,7 +2274,8 @@ footer .footer-bottom .right .socials .social-icon:hover a {
 }
 
 .popup {
-    display: none
+    display: none;
+    /* transition: .5s linear; */
 }
 
 .popup .overlay {

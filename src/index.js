@@ -13,13 +13,7 @@ import sliderGallery from './modules/sliderGallery';
 import sendForm from './modules/sendForm';
 import validator from './modules/validator';
 import maskPhone from './modules/maskPhone';
-import SliderCarousel from './modules/sliderCarousel';
-//import multiItemSlider from './modules/multiItemSlider';
-
-
-
-
-
+import multiItemSlider from './modules/multiItemSlider';
 
 
 selectClub();
@@ -40,19 +34,11 @@ sliderGallery();
 validator();
 maskPhone('input[name="phone"]');
 
-// multiItemSlider('.services-slider', {
-//     isCycling: true
-//   });
+multiItemSlider('.services-slider', {
+    isCycling: true
+  });
 
-const options = {
-    main: '.services-slider',
-    // wrap: 'test'
-    wrap: '.services-slider-wrap',
-    prev: '#left',
-    next: '#right',
-    slidesToShow: 5,
-    infinity: true
-};
-const carousel = new SliderCarousel(options);
-console.log(carousel);
-carousel.init();
+//multiItemSlider('.services-slider');
+
+
+

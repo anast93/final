@@ -2,22 +2,22 @@
 
 // Слайдер-карусель вторая попытка...
 
-const multiItemSlider = (function () {
-    return function (selector, config) {
-      var
-        _mainElement = document.querySelector(selector), // основный элемент блока
-        _sliderWrapper = _mainElement.querySelector('.services-slider-wrap'), // обертка для .slider-item
-        _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
-        _sliderControls = _mainElement.querySelectorAll('.slider-arrow'), // элементы управления
-        _sliderControlLeft = _mainElement.querySelector('.prev'), // кнопка "LEFT"
-        _sliderControlRight = _mainElement.querySelector('.next'), // кнопка "RIGHT"
-        _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
-        _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width), // ширина одного элемента    
-        _positionLeftItem = 0, // позиция левого активного элемента
-        _transform = 0, // значение транфсофрмации .slider_wrapper
-        _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
-        _items = [], // массив элементов
-        _interval = 0,
+const multiItemSlider = (() => {
+    return (selector, config) => {
+      let 
+        mainElement = document.querySelector(selector), // основный элемент блока
+        sliderWrapper = mainElement.querySelector('.services-slider-wrap'), // обертка для .slider-item
+        sliderItems = mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
+        sliderControls = mainElement.querySelectorAll('.slider-arrow'), // элементы управления
+        // sliderControlLeft = mainElement.querySelector('.prev'), // кнопка "LEFT"
+        // sliderControlRight = mainElement.querySelector('.next'), // кнопка "RIGHT"
+        wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width), // ширина обёртки
+        itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width), // ширина одного элемента    
+        positionLeftItem = 0, // позиция левого активного элемента
+        transform = 0, // значение транфсофрмации .slider_wrapper
+        step = itemWidth / wrapperWidth * 100, // величина шага (для трансформации)
+        items = [], // массив элементов
+        interval = 0,
         _config = {
           isCycling: false, // автоматическая смена слайдов
           direction: 'right', // направление смены слайдов
@@ -25,128 +25,138 @@ const multiItemSlider = (function () {
           pause: true // устанавливать ли паузу при поднесении курсора к слайдеру
         };
 
-      for (var key in config) {
+      for (let key in config) {
         if (key in _config) {
           _config[key] = config[key];
         }
       }
 
-      // наполнение массива _items
-      _sliderItems.forEach(function (item, index) {
-        _items.push({ item: item, position: index, transform: 0 });
+      // наполнение массива items
+      sliderItems.forEach((item, index) => {
+        items.push({ item: item, position: index, transform: 0 });
       });
 
-      var position = {
-        getItemMin: function () {
-          var indexItem = 0;
-          _items.forEach(function (item, index) {
-            if (item.position < _items[indexItem].position) {
+      const position = {
+        getItemMin: () => {
+          let indexItem = 0;
+          items.forEach((item, index) => {
+            if (item.position < items[indexItem].position) {
               indexItem = index;
             }
           });
           return indexItem;
         },
-        getItemMax: function () {
-          var indexItem = 0;
-          _items.forEach(function (item, index) {
-            if (item.position > _items[indexItem].position) {
+        getItemMax: () => {
+          let indexItem = 0;
+          items.forEach((item, index) => {
+            if (item.position > items[indexItem].position) {
               indexItem = index;
             }
           });
           return indexItem;
         },
-        getMin: function () {
-          return _items[position.getItemMin()].position;
+        getMin: () => {
+          return items[position.getItemMin()].position;
         },
-        getMax: function () {
-          return _items[position.getItemMax()].position;
-        }
-      }
-
-      var _transformItem = function (direction) {
-        var nextItem;
-        if (direction === 'right') {
-          _positionLeftItem++;
-          if ((_positionLeftItem + _wrapperWidth / _itemWidth - 1) > position.getMax()) {
-            nextItem = position.getItemMin();
-            _items[nextItem].position = position.getMax() + 1;
-            _items[nextItem].transform += _items.length * 100;
-            _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
-          }
-          _transform -= _step;
-        }
-        if (direction === 'left') {
-          _positionLeftItem--;
-          if (_positionLeftItem < position.getMin()) {
-            nextItem = position.getItemMax();
-            _items[nextItem].position = position.getMin() - 1;
-            _items[nextItem].transform -= _items.length * 100;
-            _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
-          }
-          _transform += _step;
-        }
-        _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
-      }
-
-      var _cycle = function (direction) {
-        if (!_config.isCycling) {
-          return;
-        }
-        _interval = setInterval(function () {
-          _transformItem(direction);
-        }, _config.interval);
-      }
-
-      // обработчик события click для кнопок "назад" и "вперед"
-      var _controlClick = function (e) {
-        if (e.target.classList.contains('.slider-arrow')) {
-          e.preventDefault();
-          var direction = e.target.classList.contains('next') ? 'right' : 'left';
-          _transformItem(direction);
-          clearInterval(_interval);
-          _cycle(_config.direction);
+        getMax: () => {
+          return items[position.getItemMax()].position;
         }
       };
 
-      var _setUpListeners = function () {
-        // добавление к кнопкам "назад" и "вперед" обрботчика _controlClick для событя click
-        _sliderControls.forEach(function (item) {
-          item.addEventListener('click', _controlClick);
+      const transformItem = (direction) => {
+        let nextItem;
+        if (direction === 'right') {
+          positionLeftItem++;
+          if ((positionLeftItem + wrapperWidth / itemWidth - 1) > position.getMax()) {
+            nextItem = position.getItemMin();
+            items[nextItem].position = position.getMax() + 1;
+            items[nextItem].transform += items.length * 100;
+            items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
+          }
+          transform -= step;
+        }
+        if (direction === 'left') {
+          positionLeftItem--;
+          if (positionLeftItem < position.getMin()) {
+            nextItem = position.getItemMax();
+            items[nextItem].position = position.getMin() - 1;
+            items[nextItem].transform -= items.length * 100;
+            items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
+          }
+          transform += step;
+        }
+        sliderWrapper.style.transform = 'translateX(' + transform + '%)';
+      };
+
+      const cycle = (direction) => {
+        if (!_config.isCycling) {
+          return;
+        }
+        interval = setInterval(() => {
+          transformItem(direction);
+        }, _config.interval);
+      };
+
+      // обработчик события click для кнопок "назад" и "вперед"
+      const controlClick = (e) => {
+        if (e.target.closest('#right, #left')) {
+          e.preventDefault();
+          const direction = e.target.closest('#right') ? 'right' : 'left';
+          transformItem(direction);
+          clearInterval(interval);
+          cycle(_config.direction);
+        }
+      };
+
+      const setUpListeners = () => {
+        // добавление к кнопкам "назад" и "вперед" обработчика controlClick для событя click
+        sliderControls.forEach((item) => {
+          item.addEventListener('click', controlClick);
         });
+
         if (_config.pause && _config.isCycling) {
-          _mainElement.addEventListener('mouseenter', function () {
-            clearInterval(_interval);
+          sliderControls.forEach((item) => {
+            item.addEventListener('mouseover', (e) => {
+              if(e.target.closest('#left, #right')) {
+                clearInterval(interval);
+              }
+            } );
           });
-          _mainElement.addEventListener('mouseleave', function () {
-            clearInterval(_interval);
-            _cycle(_config.direction);
+
+          sliderControls.forEach((item) => {
+            item.addEventListener('mouseout', (e) => {
+              if(e.target.closest('#left, #right')) {
+                clearInterval(interval);
+                cycle(_config.direction);
+              }
+            });
           });
         }
-      }
+      };
 
       // инициализация
-      _setUpListeners();
-      _cycle(_config.direction);
+      setUpListeners();
+      cycle(_config.direction);
 
       return {
-        right: function () { // метод right
-          _transformItem('right');
+        right: () => { // метод right
+          transformItem('right');
         },
-        left: function () { // метод left
-          _transformItem('left');
+        left: () => { // метод left
+          transformItem('left');
         },
-        stop: function () { // метод stop
+        stop: () => { // метод stop
           _config.isCycling = false;
-          clearInterval(_interval);
+          clearInterval(interval);
         },
-        cycle: function () { // метод cycle 
+        cycle: () => { // метод cycle 
           _config.isCycling = true;
-          clearInterval(_interval);
-          _cycle();
+          clearInterval(interval);
+          cycle();
         }
-      }
+      };
 
-    }
-  }());
+    };
+  })();
 
   export default multiItemSlider;
