@@ -1,7 +1,7 @@
 'use strict';
 
-import closeForm from './closeForm';
 import checkConsent from './checkConsent';
+import autoCloseThanks from './autoCloseThanks';
 
 //Отправка форм
 const sendForm = () => {
@@ -35,34 +35,15 @@ const sendForm = () => {
                     throw new Error('status network not 200');
                 }
 
-                    divLoad.style.display = 'none';
-
-                    if(form.closest('.popup')) {
-                        form.style.display = 'none';
-                        form.closest('.popup').style.display = 'none';
-                    }
-
-                    thanks.style.display = 'block';
-                    // setTimeout(() => {
-                    //     thanks.classList.add('animate__fadeOutUp');
-                    // }, 1000);
-                   
-                    closeForm(thanks);
-
+                autoCloseThanks(form, thanks, divLoad);
+                    
             })
             .catch((error) => {
-                divLoad.style.display = 'none';
-
-                if(form.closest('.popup')) {
-                    form.style.display = 'none';
-                    form.closest('.popup').style.display = 'none';
-                }
-
                 thanks.querySelector('.form-wrapper').querySelector('.form-content').innerHTML = `<h4>Что-то пошло не так...</h4>
                 <p>Повторите попытку позже.</p>
                 <button class="btn close-btn">OK</button>`;
-                thanks.style.display = 'block';
-                closeForm(thanks);
+                
+                autoCloseThanks(form, thanks, divLoad);
             });
         }
 

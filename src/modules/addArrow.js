@@ -5,7 +5,6 @@ const addArrow = () => {
     const arrowUp = document.getElementById('totop');
     arrowUp.style.display = 'none';
     const headerMain = document.querySelector('.header-main');
-    const headSlider = document.querySelector('.head-slider');
     
     document.addEventListener('scroll', () => {
 
@@ -16,6 +15,18 @@ const addArrow = () => {
         } else {
             arrowUp.style.display = 'none';
         }
+    });
+
+    arrowUp.addEventListener('click', () => {
+        event.preventDefault();
+
+        const id = arrowUp.getAttribute('href');
+
+        document.querySelector(id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'start'
+        });
     });
 };
 

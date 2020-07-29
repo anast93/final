@@ -1,14 +1,10 @@
 'use strict';
 
 // Проверка промокода
-
-const checkPromo = (str, elem, value) => {
+const checkPromo = (str) => {
     const regExp = /^тело2020$/ig;
-    if(regExp.test(str)) {
-        elem.textContent = Math.ceil(+value * 7 / 10);
-    } else {
-        elem.textContent = value;
-    }
+    const ratio = regExp.test(str) ? 0.7 : 1;
+    return ratio;
 };
 
 export default checkPromo;

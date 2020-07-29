@@ -32,7 +32,6 @@ const sliderGallery = () => {
         const imgNode = gallerySlider.querySelector('.slide img');
         gallerySlider.style.height = `${imgNode.offsetHeight}px`;
     
-
         prevSlide(dot, currentSlide, 'slick-active');
         prevSlide(slide, currentSlide, 'slide-active');
         

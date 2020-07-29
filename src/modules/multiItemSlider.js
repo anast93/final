@@ -104,7 +104,7 @@ const multiItemSlider = (() => {
           const direction = e.target.closest('#right') ? 'right' : 'left';
           transformItem(direction);
           clearInterval(interval);
-          cycle(_config.direction);
+          //cycle(_config.direction);
         }
       };
 

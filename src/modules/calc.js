@@ -1,6 +1,7 @@
 'use strict';
 
 import checkPromo from './checkPromo';
+import animateNumbers from './animateNumbers';
 
 // Калькулятор
 const calc = () => {
@@ -45,27 +46,21 @@ const calc = () => {
                 }
             });
         
-            return club.get(+arr[0].value);
+            const result = Math.ceil(club.get(+arr[0].value) * checkPromo(promo.value));
+            
+            animateNumbers(price, result);
+
         };
 
         cardOrder.addEventListener('click', (event) => {
             const target = event.target;
             if(target.matches('.club input') || target.matches('.time input')) {
-                
-                if(promo.value) {
-                    checkPromo(promo.value, price, priceValue());
-                } else {
-                    price.textContent = priceValue();
-                }
+                priceValue();
             }
         });
 
         promo.addEventListener('change', () => {
-            if(promo.value) {
-                checkPromo(promo.value, price, priceValue());
-            } else {
-                price.textContent = priceValue();
-            }
+            priceValue();
         });
 
     }

@@ -14,6 +14,8 @@ import sendForm from './modules/sendForm';
 import validator from './modules/validator';
 import maskPhone from './modules/maskPhone';
 import multiItemSlider from './modules/multiItemSlider';
+import scroll from './modules/scroll';
+
 
 
 selectClub();
@@ -37,6 +39,8 @@ maskPhone('input[name="phone"]');
 multiItemSlider('.services-slider', {
     isCycling: true
   });
+
+  scroll();
 
 //multiItemSlider('.services-slider');
 
