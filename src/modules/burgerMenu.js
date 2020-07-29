@@ -10,19 +10,20 @@ const burgerMenu = () => {
         head = document.querySelector('.head');
 
     if(menuBtn) {
-        document.addEventListener('scroll', () => {
-            if(window.pageYOffset >= head.getBoundingClientRect().height) {
-                topMenu.style.position = 'fixed';
-                topMenu.style.top = '0';
-                head.style['margin-bottom'] = '60px';
-            } else {
-                topMenu.style.position = '';
-                head.style['margin-bottom'] = '0px';
-            }
-        });
+      document.addEventListener('scroll', () => {
 
-        closePopUp();
-        togglePopUp('.menu-button');
+        if(window.pageYOffset >= head.getBoundingClientRect().height) {
+          topMenu.style.position = 'fixed';
+          topMenu.style.top = '0';
+          head.style['margin-bottom'] = '60px';
+        } else {
+          topMenu.style.position = '';
+          head.style['margin-bottom'] = '0px';
+        }
+      });
+
+      closePopUp();
+      togglePopUp('.menu-button');
     }    
 };
 

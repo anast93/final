@@ -10,10 +10,10 @@ const addArrow = () => {
 
         if(window.pageYOffset > headerMain.getBoundingClientRect().height) {
             
-            arrowUp.style.display = 'block';
+          arrowUp.style.display = 'block';
 
         } else {
-            arrowUp.style.display = 'none';
+          arrowUp.style.display = 'none';
         }
     });
 

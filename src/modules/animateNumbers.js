@@ -2,8 +2,8 @@
 
 // Анимация цифр
 const animateNumbers = (elemPrice, price) => {
-    let count = +elemPrice.textContent,
-        delta = price - count;
+    let count = +elemPrice.textContent;
+        let delta = price - count;
 
         // Ф-я для анимации цифр 
         const totalAnimation = () => {
@@ -19,8 +19,7 @@ const animateNumbers = (elemPrice, price) => {
             // шаг, с которым происходит изменение числа
             let step = 10 **(length-2);
 
-            // Если разница между рассчитаной стоимостью и значением в поле "Итого" стала меньше 
-            //или равна шагу, то значению в поле присваивается рассчитанная стоимость.
+            // Если разница между рассчитаной стоимостью и значением в поле "Итого" стала меньше или равна шагу, то значению в поле присваивается рассчитанная стоимость.
             if(Math.abs(+elemPrice.textContent - price) <= step) {
                 elemPrice.textContent = price;
                 cancelAnimationFrame(requestId);

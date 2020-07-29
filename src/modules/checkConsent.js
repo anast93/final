@@ -10,17 +10,15 @@ const checkConsent = (elem) => {
         consent.noValidate = true;
 
         if(consent.checked) {
-            if(elem.querySelector('.personal-data .errorContens')) {
-                elem.querySelector('.personal-data .errorContens').remove();
-            }
             return true;
         } else {
-            if(!elem.querySelector('.personal-data').querySelector('.errorContens')) {
+            if(!elem.querySelector('#error-consent')) {
                 const div = document.createElement('div');
                 div.textContent = 'Необходимо подтвердить согласие.';
                 div.style.color = 'red';
-                div.classList.add('errorContens');
-                elem.querySelector('.personal-data').append(div);
+                div.style['text-align'] = 'center';
+                div.id = 'error-consent';
+                elem.append(div);
             }
             return false;
         }

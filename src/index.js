@@ -17,7 +17,6 @@ import multiItemSlider from './modules/multiItemSlider';
 import scroll from './modules/scroll';
 
 
-
 selectClub();
 freeVisitForm();
 callbackForm();
@@ -40,9 +39,9 @@ multiItemSlider('.services-slider', {
     isCycling: true
   });
 
-  scroll();
+scroll();
 
-//multiItemSlider('.services-slider');
+
 
 
 

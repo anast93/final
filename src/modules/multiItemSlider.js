@@ -21,7 +21,7 @@ const multiItemSlider = (() => {
         _config = {
           isCycling: false, // автоматическая смена слайдов
           direction: 'right', // направление смены слайдов
-          interval: 1000, // интервал между автоматической сменой слайдов
+          interval: 2500, // интервал между автоматической сменой слайдов
           pause: true // устанавливать ли паузу при поднесении курсора к слайдеру
         };
 
@@ -115,21 +115,12 @@ const multiItemSlider = (() => {
         });
 
         if (_config.pause && _config.isCycling) {
-          sliderControls.forEach((item) => {
-            item.addEventListener('mouseover', (e) => {
-              if(e.target.closest('#left, #right')) {
-                clearInterval(interval);
-              }
-            } );
+          mainElement.addEventListener('mouseover', () => {
+            clearInterval(interval);
           });
-
-          sliderControls.forEach((item) => {
-            item.addEventListener('mouseout', (e) => {
-              if(e.target.closest('#left, #right')) {
-                clearInterval(interval);
-                cycle(_config.direction);
-              }
-            });
+          mainElement.addEventListener('mouseout', () => {
+            clearInterval(interval);
+            cycle(_config.direction);
           });
         }
       };

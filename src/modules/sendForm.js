@@ -2,10 +2,12 @@
 
 import checkConsent from './checkConsent';
 import autoCloseThanks from './autoCloseThanks';
+import checkPhone from './checkPhone';
 
 //Отправка форм
 const sendForm = () => {
     const preload = '<img src="./images/eclipse.svg">';
+    
 
     document.addEventListener('submit', (event) => {
         const target = event.target;
@@ -14,7 +16,10 @@ const sendForm = () => {
             event.preventDefault();
 
             const form = target.closest('form');
-            if(!checkConsent(form)) return;
+            if(!checkConsent(form) || !checkPhone(form)) return;
+            // if(!checkPhone(form)) {
+            //     return;
+            // }
 
             const divLoad = form.parentNode.querySelector('.form-content_load'),
                 thanks = document.getElementById('thanks');
@@ -28,6 +33,10 @@ const sendForm = () => {
                 body[key] = val;
             });
             form.reset();
+
+            if(form.querySelector('.error-club')) {
+                form.querySelector('.error-club').remove();
+            }
 
             postData(body)
             .then((response) => {

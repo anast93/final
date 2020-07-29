@@ -14,7 +14,6 @@ const mainSlider = () => {
         }
 
         slide[count].style.display = 'flex';
-        //slide[count].style.margin = '0 auto';
     }, 1300);
 };
 

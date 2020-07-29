@@ -41,26 +41,28 @@ const calc = () => {
             const club = checkClub();
 
             const arr = [...time].filter(elem => {
-                if(elem.checked) {
-                    return elem;
-                }
-            });
+              if(elem.checked) {
+                return elem;
+              }
+          });
         
-            const result = Math.ceil(club.get(+arr[0].value) * checkPromo(promo.value));
+          const result = Math.ceil(club.get(+arr[0].value) * checkPromo(promo.value));
             
-            animateNumbers(price, result);
+          animateNumbers(price, result);
 
         };
 
         cardOrder.addEventListener('click', (event) => {
-            const target = event.target;
-            if(target.matches('.club input') || target.matches('.time input')) {
-                priceValue();
-            }
+          const target = event.target;
+
+          if(target.matches('.club input') || target.matches('.time input')) {
+            priceValue();
+          }
+
         });
 
         promo.addEventListener('change', () => {
-            priceValue();
+          priceValue();
         });
 
     }

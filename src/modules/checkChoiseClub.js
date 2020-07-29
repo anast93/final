@@ -14,12 +14,13 @@ const checkChoiseClub = () => {
     }
 
     else {
-        if(!document.querySelector('.choose-club .div-error')) {
+        if(!document.querySelector('#footer_form .error-club')) {
             const divError = document.createElement('div');
-            divError.classList.add('div-error');
+            divError.classList.add('error-club');
             divError.textContent = 'Необходимо выбрать клуб.';
             divError.style.color = 'red';
-            document.querySelector('.choose-club').append(divError);
+            divError.style['text-align'] = 'center';
+            document.querySelector('#footer_form').append(divError);
         }
         return false;
     }

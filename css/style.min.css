@@ -789,7 +789,8 @@ html#schelkovo .advantages .wrapper {
 
     html#mozaika #cards .content .left,
     html#schelkovo #cards .content .left {
-        margin-right: 0
+        margin-right: 0;
+        margin-bottom: 30px
     }
 
     html#mozaika #cards #card_order .cards-types,
@@ -2715,7 +2716,7 @@ p.personal-data input[type=checkbox]:checked+label:before {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        margin-bottom: 20px
+        /* margin-bottom: 30px */
     }
 
     #card_order p.submit {
