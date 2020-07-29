@@ -4,12 +4,15 @@
 const closeForm = (popUp) => {
     popUp.addEventListener('click', (e) => {
         let target = e.target;
-        const form = popUp.querySelector('form');
+        
 
         const cleanForm = () => {
             popUp.style.display = 'none';
 
-            const inputs = form.querySelectorAll('input');
+            const form = popUp.querySelector('form');
+            
+            if(popUp.id !== 'gift') {
+                const inputs = form.querySelectorAll('input');
             if([...inputs].some(elem => elem.value !== '')) {
                 form.reset();
             }
@@ -20,6 +23,7 @@ const closeForm = (popUp) => {
 
             if(form.querySelector('#error-phone')) {
                 form.querySelector('#error-phone').remove();
+            }
             }
 
         };
